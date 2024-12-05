@@ -37,7 +37,7 @@ public class WordGame {
                 break;
             }
             char letter = leter.charAt(0);
-            if (finalWord.contains(leter)){
+            if (finalWord.contains(leter)) {
                 Right outr = new Right();
                 hiddenWord = outr.getRightResult(letter, word, hiddenWord);
                 System.out.println("Right. ");
