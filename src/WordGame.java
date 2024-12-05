@@ -1,4 +1,3 @@
-import java.util.Objects;
 import java.util.Scanner;
 
 public class WordGame {
@@ -32,34 +31,32 @@ public class WordGame {
         while (true) {
             System.out.println("Введите букву или exit для выхода");
             Scanner scanner = new Scanner(System.in);
-            String leter = scanner.nextLine();
-            if (leter.equals("exit")) {
+            String letterStr = scanner.nextLine();
+            if (letterStr.equals("exit")) {
                 break;
             }
-            char letter = leter.charAt(0);
-            if (finalWord.contains(leter)) {
-                Right outr = new Right();
-                hiddenWord = outr.getRightResult(letter, word, hiddenWord);
+            char letter = letterStr.charAt(0);
+            if (finalWord.contains(letterStr)) {
+                Right right = new Right();
+                hiddenWord = right.getRightResult(letter, word, hiddenWord);
                 System.out.println("Right. ");
                 int count = 0;
-                for (int i = 0; i < hiddenWord.length; i++) {
-                    if (hiddenWord[i] !=  '*') {
+                for (char c : hiddenWord) {
+                    if (c != '*') {
                         count++;
-                    }
-                    else {
+                    } else {
                         count = 0;
                     }
                 }
                 if (count == hiddenWord.length) {
                     System.out.println("You won!");
                     System.out.print("Word: ");
-                    for (char star : hiddenWord) {
-                        System.out.print(star + " ");
+                    for (char symbol : hiddenWord) {
+                        System.out.print(symbol + " ");
                     }
                     break;
                 }
-            }
-            else {
+            } else {
                 counter ++;
                 System.out.println("Wrong. ");
                 if (counter == 5) {
@@ -72,10 +69,10 @@ public class WordGame {
                     break;
                 }
             }
-            System.out.println("Tries left: " + (5 - counter) + " out of 5." );
+            System.out.println("Tries left: " + (5 - counter));
             System.out.print("Word: ");
-            for (char star : hiddenWord) {
-                System.out.print(star + " ");
+            for (char symbol : hiddenWord) {
+                System.out.print(symbol + " ");
             }
             System.out.println();
         }
