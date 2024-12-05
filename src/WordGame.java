@@ -32,11 +32,11 @@ public class WordGame {
         while (true) {
             System.out.println("Введите букву или exit для выхода");
             Scanner scanner = new Scanner(System.in);
-            char letter = scanner.next().charAt(0);
-            String leter = "" + letter;
-            if (Objects.equals(leter, "exit")) {
+            String leter = scanner.nextLine();
+            if (leter.equals("exit")) {
                 break;
             }
+            char letter = leter.charAt(0);
             if (finalWord.contains(leter)){
                 Right outr = new Right();
                 hiddenWord = outr.getRightResult(letter, word, hiddenWord);
